@@ -15,18 +15,20 @@ libraryDependencies ++= {
   val logbackV         = "1.1.3"
   val scalaCommonV     = "1.6.0"
   val casbahV          = "3.1.1"
+  val spec2V           = "3.7.3"
 
-    Seq(
+  Seq(
     "com.typesafe.akka"   %% "akka-http-core"                    % akkaV,
     "com.typesafe.akka"   %% "akka-http-experimental"            % akkaV,
     "com.typesafe.akka"   %% "akka-http-spray-json-experimental" % akkaV,
     "io.spray"            %% "spray-client"                      % sprayClientV,
     "com.iheart"          %% "ficus"                             % ficusV,
-    "com.typesafe.akka"   %% "akka-testkit"                      % akkaV          % Test,
     "org.mongodb"         %% "casbah"                            % casbahV,
+    "com.typesafe.akka"   %% "akka-testkit"                      % akkaV          % Test,
     "org.scalatest"       %% "scalatest"                         % scalaTestV     % Test,
     "com.typesafe.akka"   %% "akka-http-testkit"                 % akkaV          % Test,
-    "com.typesafe.akka"   %% "akka-stream-testkit"               % akkaV          % Test
+    "com.typesafe.akka"   %% "akka-stream-testkit"               % akkaV          % Test,
+    "org.specs2"          %% "specs2-core"                       % spec2V       % Test
     )
 }
 
@@ -39,12 +41,8 @@ scalacOptions := Seq(
   "-Xlog-reflective-calls",
   "-Ypatmat-exhaust-depth", "40",
   "-Xmax-classfile-name", "240", // for docker container
-  //      "-Xlog-implicits",
-  //      disable compiler switches for now, some of them make an issue with recompilations
+  "-Yrangepos",
   "-optimise"
-  //      "-Yclosure-elim",
-  //      "-Yinline",
-  //      "-Ybackend:GenBCode"
 )
 
 mainClass in Compile := Some("acme.inc.Boot")

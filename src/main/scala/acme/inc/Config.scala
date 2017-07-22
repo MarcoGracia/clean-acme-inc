@@ -23,7 +23,7 @@ object Config {
   case class ActorSystem(enabled: Boolean)
 
   private val rootConfig = ConfigFactory.load()
-  val config = rootConfig.getConfig("acme.inc")
+  val config = rootConfig.getConfig("acme")
 
   val mongoConfig = config.as[MongoConfig]("database")
   val httpConfig = config.as[HttpConfig]("http")

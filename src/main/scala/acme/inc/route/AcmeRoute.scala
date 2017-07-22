@@ -1,6 +1,6 @@
 package acme.inc.route
 
-import acme.inc.model.UserProfile
+import acme.inc.model.{Invoice, UserProfile}
 import acme.inc.service.AcmeService
 import akka.actor.{ActorRef, ActorSystem}
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
@@ -23,7 +23,7 @@ trait AcmeRoute extends Directives with DefaultJsonProtocol {
 
   implicit def db: MongoDB
 
-  private val acmeSerice = AcmeService
+  private val acmeService = AcmeService
 
   //def managerActor: ActorRef
 
@@ -36,7 +36,43 @@ trait AcmeRoute extends Directives with DefaultJsonProtocol {
       pathPrefix("profile") {
         get {
           complete {
-            acmeSerice.getUser(userId.toLong)
+            acmeService.getUserData(userId)
+          }
+        } ~
+        post {
+          entity(as[UserProfile]) { user =>
+            complete {
+              acmeService.createUser(user)
+            }
+          }
+        }
+      } ~
+      pathPrefix("invoices") {
+        pathPrefix("address" / Segment) { addressId =>
+          get {
+            complete {
+              acmeService.getAllInvoicesForAddress(userId, addressId)
+            }
+          } ~
+          post {
+            entity(as[Invoice]) { invoice =>
+              complete {
+                acmeService.addInvoice(userId, addressId, invoice)
+              }
+            }
+          }
+        } ~
+        get{
+          parameter("from".as[Long], "to".as[Long]) { (from, to) =>
+            complete {
+              acmeService.getAllInvoicesFromPeriod(userId, from, to)
+            }
+          }
+        } ~
+        get {
+          complete {
+            //acmeService.getAllInvoices(userId)
+            acmeService.getUser(userId)
           }
         }
       }
