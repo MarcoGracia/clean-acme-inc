@@ -111,7 +111,7 @@ GET /api/customer/2/invoices?from=0&amp;to=5 HTTP/1.1
 * Postman collection: [https://www.getpostman.com/collections/d54e1c1338441f7f8549](https://www.getpostman.com/collections/d54e1c1338441f7f8549)
 
 ## TODOS
-* User entity returns the invoice data, creaiton of a convinient entity only for user data would be recommended
+* User entity returns the invoice data, creation of a convenient entity only for user data would be recommended
 * Error handling is through exceptions, in the end you want to encapsulate the error and send it as a response, as for now the client does not know what went wrong
 * Deal with date format: In my opinion, persitent dates should be in epoch time, and dealing with them in the backend should be trough "Long" instances. Formating is for the frontend :)
     If the requirement really needs to keep formated dates persitent/displayed trough API, then implicit conversions would do the trick.
