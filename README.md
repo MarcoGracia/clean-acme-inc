@@ -5,6 +5,10 @@ The task is built to ensure it is scalable and new scenarios, entities and funct
 The goal was to build convenience classes that enable easy and scalable development, also try motivate the developer to implement tests
 before the actual implementation.
 
+Data structure is as simple as it gets, one document encapsulates all the data, following the same sctructure as the JSON examples provided.
+Not mantaining foreign keys and reducing the amount of DB operations was the goal, downside is the code gets verbose sometimes, but the immutability and funtional nature of Scala enables this kind
+of implementation.
+
 Main resources used:
 * Akka HTTP [http://doc.akka.io/docs/akka-http/current/scala/http/](http://doc.akka.io/docs/akka-http/current/scala/http/)
 * Spray JSON [https://github.com/spray/spray-json](https://github.com/spray/spray-json)
@@ -16,7 +20,7 @@ Main resources used:
 - [Description](#description)
 - [How to Use](#how-to-use)
 - [Usage and Examples](#usage-and-examples)
-- [TODOS](#TODOS)
+- [TODOS](#todos)
 
 ## How To Use
 
@@ -107,6 +111,7 @@ GET /api/customer/2/invoices?from=0&amp;to=5 HTTP/1.1
 * Postman collection: [https://www.getpostman.com/collections/d54e1c1338441f7f8549](https://www.getpostman.com/collections/d54e1c1338441f7f8549)
 
 ## TODOS
+* User entity returns the invoice data, creaiton of a convinient entity only for user data would be recommended
 * Error handling is through exceptions, in the end you want to encapsulate the error and send it as a response, as for now the client does not know what went wrong
-* Deal with date format: From my own believe, persitent dates should be in epoch time, and dealing with them in the backend should be trough them. Formating is for the frontend :)
+* Deal with date format: In my opinion, persitent dates should be in epoch time, and dealing with them in the backend should be trough "Long" instances. Formating is for the frontend :)
     If the requirement really needs to keep formated dates persitent/displayed trough API, then implicit conversions would do the trick.
