@@ -104,6 +104,8 @@ GET /api/customer/2/invoices?from=0&amp;to=5 HTTP/1.1
     Cache-Control: no-cache
 ```
 
+* Postman collection: [https://www.getpostman.com/collections/d54e1c1338441f7f8549](https://www.getpostman.com/collections/d54e1c1338441f7f8549)
+
 ## TODOS
 * Error handling is through exceptions, in the end you want to encapsulate the error and send it as a response, as for now the client does not know what went wrong
 * Deal with date format: From my own believe, persitent dates should be in epoch time, and dealing with them in the backend should be trough them. Formating is for the frontend :)
