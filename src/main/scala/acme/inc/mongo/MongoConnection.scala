@@ -5,7 +5,7 @@ import com.mongodb.casbah.Imports._
 /**
   * A standard wrapper around a Mongo connection to manage the state. Can be subclasses and should be used
   * to provide a singleton within an application.
-  */
+**/
 trait MongoConnection {
   protected[this] def mongoUri: String
 

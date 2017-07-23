@@ -3,6 +3,7 @@ package util
 import scala.concurrent._
 import scala.concurrent.duration._
 
+// Conviniency class to implicitly deal with futures in tests
 trait FutureTestSupport {
   import scala.language.implicitConversions
 

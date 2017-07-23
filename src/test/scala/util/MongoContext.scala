@@ -8,6 +8,8 @@ import util.FutureTestSupport
 
 import scala.concurrent.util
 
+// Conviniency class to add mongodb support to tests
+
 trait MongoContext extends BeforeAfter {
   val contextId = UUID.randomUUID().toString
 

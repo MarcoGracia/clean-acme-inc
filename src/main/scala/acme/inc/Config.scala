@@ -27,7 +27,5 @@ object Config {
 
   val mongoConfig = config.as[MongoConfig]("database")
   val httpConfig = config.as[HttpConfig]("http")
-  val actorConfig = config.as[ActorSystem]("actor")
-
 
 }
