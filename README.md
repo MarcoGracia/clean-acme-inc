@@ -3,7 +3,7 @@
 ## Description
 The task is built to ensure it is scalable and new scenarios, entities and functionalities are easy to implement.
 The goal was to build convenience classes that enable easy and scalable development, also try motivate the developer to implement tests
-before the cactual implementation.
+before the actual implementation.
 
 Main resources used:
 * Akka HTTP [http://doc.akka.io/docs/akka-http/current/scala/http/](http://doc.akka.io/docs/akka-http/current/scala/http/)
@@ -104,7 +104,7 @@ GET /api/customer/2/invoices?from=0&amp;to=5 HTTP/1.1
     Cache-Control: no-cache
 ```
 
-## TODO
-* Error handling is tought exceptions, in the end you want to encapsulate the error and send it as a response, as for now the client does not know what went wrong
+## TODOS
+* Error handling is through exceptions, in the end you want to encapsulate the error and send it as a response, as for now the client does not know what went wrong
 * Deal with date format: From my own believe, persitent dates should be in epoch time, and dealing with them in the backend should be trough them. Formating is for the frontend :)
     If the requirement really needs to keep formated dates persitent/displayed trough API, then implicit conversions would do the trick.
